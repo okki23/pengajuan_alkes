@@ -28,27 +28,14 @@ class Barang extends Parent_Controller {
   	public function fetch_barang(){  
        $getdata = $this->m_barang->fetch_barang();
        echo json_encode($getdata);   
-	}
-	
-	public function fetch_barangx(){  
-       $getdata = $this->m_barang->fetch_barangx();
-       echo json_encode($getdata);   
-	}
-
-	public function fetch_barang_front(){  
-		$getdata = $this->m_barang->fetch_barang_front();
-		echo json_encode($getdata);   
-	 }
+	} 
 
     
 	 
 	public function get_data_edit(){
 		$id = $this->uri->segment(3);
-		$sql = "select a.*,b.nama_kategori from m_barang a
-		left join m_kategori b on b.id = a.id_kategori  where a.id = '".$id."' ";
-
-		$get = $this->db->query($sql)->row();
-		echo json_encode($get,TRUE);
+		$sql = $this->db->where('id',$id)->get($this->nama_tabel)->row(); 
+		echo json_encode($sql,TRUE);
 	}
 	 
 	public function hapus_data(){

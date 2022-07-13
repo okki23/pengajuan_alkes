@@ -3,7 +3,7 @@
           
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Listing Data Karyawan</h3>
+                <h3 class="card-title">Listing Data Pengajuan</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -13,14 +13,13 @@
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
                       <tr> 
-                        <th style="width:10%;">NIP</th>   
-                        <th style="width:10%;">Nama</th>   
-                        <th style="width:10%;">No HP</th>  
-                        <th style="width:10%;">Jenis Kelamin</th>  
-                        <th style="width:10%;">Posisi</th>  
-                        <th style="width:10%;">Tinggi Badan</th> 
-                        <th style="width:10%;">Alamat</th>   
-                        <th style="width:10%;">Email</th>    
+                        <th style="width:10%;">Kode Pengajuan</th>   
+                        <th style="width:10%;">Kode Barang</th>   
+                        <th style="width:10%;">Nama Barang</th>  
+                        <th style="width:10%;">Jumlah Kelamin</th>  
+                        <th style="width:10%;">Kondisi</th>  
+                        <th style="width:10%;">Keterangan</th> 
+                        <th style="width:10%;">Status</th>    
                         <th style="width:15%;">Opsi</th>   
                       </tr>
                   </thead>  
@@ -46,25 +45,28 @@
                                  
                                     <input type="hidden" name="id" id="id"> 
                                     <div class="form-group">
-                                    <label> NIP  </label>
+                                    <label> Kode Pengajuan  </label>
                                         <div class="form-line">
                                             <input type="text" name="nip" id="nip" class="form-control" placeholder="NIP" />
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                    <label> Nama  </label>
-                                        <div class="form-line">
-                                            <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama" />
-                                        </div>
+                                    <label> Kode Barang  </label>
+                                    <div class="input-group">
+                                        
+                                        <input type="text" name="nama_barang" id="nama_jabatan" class="form-control" readonly="readonly" >
+                                        <input type="hidden" name="id_jabatan" id="id_jabatan" readonly="readonly">
+                                        <span class="input-group-append">
+                                            <button type="button"  onclick="PilihJabatan();" class="btn btn-primary btn-flat">Pilih Posisi...</button>
+                                        </span>
                                     </div>
                                     <div class="form-group">
-                                    <label> No HP  </label>
+                                    <label> Nama Barang  </label>
                                         <div class="form-line">
                                             <input type="text" name="no_hp" id="no_hp" class="form-control" placeholder="Telp" />
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                    <label> Tinggi Badan  </label>
+                                    <label> Jumlah  </label>
                                         <div class="form-line">
                                             <input type="text" name="tinggi_badan" id="tinggi_badan" class="form-control" placeholder="Tinggi Badan" />
                                         </div>
@@ -168,7 +170,7 @@
         $("#defaultModal").modal('show');
  
         $.ajax({
-             url:"<?php echo base_url(); ?>karyawan/get_data_edit/"+id,
+             url:"<?php echo base_url(); ?>trans_pengajuan/get_data_edit/"+id,
              type:"GET",
              dataType:"JSON", 
              success:function(result){  
@@ -217,7 +219,7 @@
         if(confirm('Anda yakin ingin menghapus data ini?'))
         { 
         $.ajax({
-            url : "<?php echo base_url('karyawan/hapus_data')?>/"+id,
+            url : "<?php echo base_url('trans_pengajuan/hapus_data')?>/"+id,
             type: "GET",
             dataType: "JSON",
             success: function(data)
@@ -237,7 +239,7 @@
          var formData = new FormData($('#user_form')[0]);    
             //transaksi dibelakang layar
             $.ajax({
-             url:"<?php echo base_url(); ?>karyawan/simpan_data",
+             url:"<?php echo base_url(); ?>trans_pengajuan/simpan_data",
              type:"POST",
              data:formData,
              contentType:false,  
@@ -260,7 +262,7 @@
            });
              
            $("#example1").DataTable({
-              "ajax":"<?php echo base_url(); ?>karyawan/fetch_karyawan",
+              "ajax":"<?php echo base_url(); ?>trans_pengajuan/fetch_trans_pengajuan",
               "ordering": true,               // Allows ordering
               "searching": true,              // Searchbox
               "paging": true,                 // Pagination

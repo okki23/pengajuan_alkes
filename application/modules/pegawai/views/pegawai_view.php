@@ -3,7 +3,7 @@
           
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Listing Data User</h3>
+                <h3 class="card-title">Listing Data pegawai</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -12,11 +12,14 @@
             &nbsp;
                 <table id="example1" class="table table-bordered table-striped">
                   <thead>
-                      <tr> 
-                        <th style="width:20%;">Username</th>  
-                        <th style="width:20%;">Nama Pegawai</th>  
-                        <th style="width:20%;">Roles</th>  
-                        <th style="width:10%;">Opsi</th> 
+                      <tr>  
+                        <th style="width:10%;">NIK</th>   
+                        <th style="width:10%;">Nama</th>   
+                        <th style="width:10%;">Alamat</th>  
+                        <th style="width:10%;">Telp</th>  
+                        <th style="width:10%;">Jenis Kelamin</th>  
+                        <th style="width:10%;">Email</th>  
+                        <th style="width:15%;">Opsi</th>   
                       </tr>
                   </thead>  
                 </table>
@@ -29,7 +32,6 @@
         </div>
         <!-- /.row -->
 
-        
     <!-- form tambah dan ubah data -->
     <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
                 <div class="modal-dialog modal-xl" role="document">
@@ -42,38 +44,49 @@
                                  
                                     <input type="hidden" name="id" id="id"> 
                                     <div class="form-group">
-                                        <label for=""> Username </label>
+                                    <label> NIK  </label>
                                         <div class="form-line">
-                                            <input type="text" name="username" id="username" class="form-control" placeholder="Username" />
+                                            <input type="text" name="nik" id="nik" class="form-control" placeholder="NIK" />
                                         </div>
                                     </div>
-                                    <div class="input-group">
-                                        <input type="text" name="nama_pegawai" id="nama_pegawai" class="form-control" readonly="readonly" >
-                                        <input type="hidden" name="id_pegawai" id="id_pegawai" readonly="readonly">
-                                        <span class="input-group-append">
-                                            <button type="button"  onclick="CariPegawai();" class="btn btn-primary btn-flat">Pilih pegawai...</button>
-                                        </span>
+                                    <div class="form-group">
+                                    <label> Nama  </label>
+                                        <div class="form-line">
+                                            <input type="text" name="nama" id="nama" class="form-control" placeholder="Nama" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                    <label> Alamat </label>
+                                        <div class="form-line">
+                                            <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Alamat" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                    <label> Telp  </label>
+                                        <div class="form-line">
+                                            <input type="text" name="telp" id="telp" class="form-control" placeholder="Telepon" />
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                    <label> Email </label>
+                                        <div class="form-line">
+                                            <input type="text" name="email" id="email" class="form-control" placeholder="Email" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                    
+                                    <label> Jenis Kelamin  </label>
+                                    <br>
+                                        <input type="hidden" name="jk" id="jk">
+
+                                        <button type="button" id="priabtn" class="btn btn-default waves-effect "> Laki-Laki </button>
+
+                                        <button type="button" id="wanitabtn" class="btn btn-default waves-effect "> Perempuan </button>
+                                    
                                     </div>
                                   
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <span class="label label-danger">* Kosongkan Apabila Tidak Mengganti Password </span>
-                                            <input type="password" name="password" id="password" class="form-control" placeholder="Password" /> 
-                                        </div>
-                                    </div> 
-                                    <div class="form-group">
-                                    
-                                        <label> User Type  </label>
-                                        <br>
-                                        <input type="hidden" name="level" id="level">
-
-                                        <button type="button" id="adminbtn" class="btn btn-default waves-effect "> Admin </button>
-
-                                        <button type="button" id="userbtn" class="btn btn-default waves-effect "> User </button>
-                                    
-                                    </div>  
-                                    <br>
-                                    <hr>
                                    <button type="button" onclick="Simpan_Data();" class="btn btn-success waves-effect">  <i class="fas fa-database"></i> Simpan</button>
 
                                    <button type="button" name="cancel" id="cancel" class="btn btn-danger waves-effect" onclick="javascript:Bersihkan_Form();" data-dismiss="modal">  <i class="fas fa-times"></i> Batal</button>
@@ -83,91 +96,50 @@
                     </div>
                 </div>
     </div>
- 
-    <!-- modal cari pegawai -->
-    <div class="modal fade" id="CariPegawaiModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-xl" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title" >Cari Pegawai</h4>
-                        </div>
-                        <div class="modal-body">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">X Tutup</button>
- 
-                                <br>
-                                <hr> 
-                                 <table width="100%" class="table table-bordered table-striped table-hover " id="daftar_pegawai" >
    
-                                    <thead>
-                                        <tr>  
-                                            <th style="width:98%;">NIP </th> 
-                                            <th style="width:98%;">Nama </th> 
-                                         </tr> 
-                                    </thead> 
-                                    <tbody id="daftar_pegawai">
-
-                                </tbody>
-                                </table> 
-                       </div>
-                     
-                    </div>
-                </div>
-    </div> 
-  <script> 
-    $("#adminbtn").on("click",function(){
-        $("#level").val('1');
+  <script>  
+    $("#priabtn").on("click",function(){
+        $("#jk").val('L');
         $(this).attr('class','btn btn-primary');
-        $("#userbtn").attr('class','btn btn-default'); 
+        $("#wanitabtn").attr('class','btn btn-default'); 
     });
 
-    $("#userbtn").on("click",function(){
-        $("#level").val('2');
+    $("#wanitabtn").on("click",function(){
+        $("#jk").val('P');
         $(this).attr('class','btn btn-primary');
-        $("#adminbtn").attr('class','btn btn-default');  
+        $("#priabtn").attr('class','btn btn-default');  
     }); 
-   
-    $('#daftar_pegawai').DataTable( {
-        "ajax": "<?php echo base_url(); ?>pegawai/fetch_pegawai"           
-    });
-
-    var daftar_pegawai = $('#daftar_pegawai').DataTable();
      
-    $('#daftar_pegawai tbody').on('click', 'tr', function () {
-         
-         var content = daftar_pegawai.row(this).data()
-         console.log(content);
-         $("#nama_pegawai").val(content[1]);
-         $("#id_pegawai").val(content[7]);
-         $("#CariPegawaiModal").modal('hide');
-    });
-       
+ 
     function Ubah_Data(id){
         $("#defaultModalLabel").html("Form Ubah Data");
         $("#defaultModal").modal('show');
  
         $.ajax({
-             url:"<?php echo base_url(); ?>user/get_data_edit/"+id,
+             url:"<?php echo base_url(); ?>pegawai/get_data_edit/"+id,
              type:"GET",
              dataType:"JSON", 
-             success:function(result){  
+             success:function(result){   
                  $("#defaultModal").modal('show'); 
                  $("#id").val(result.id);
-                 $("#username").val(result.username); 
-                 $("#id_pegawai").val(result.id_pegawai);
-                 $("#nama_pegawai").val(result.nama); 
-                 $("#level").val(result.level); 
-
-                 if(result.level == '1'){
-                    $("#adminbtn").attr('class','btn btn-primary');
-                    $("#userbtn").attr('class','btn btn-default');
+                 $("#nik").val(result.nik);
+                 $("#nama").val(result.nama);
+                 $("#alamat").val(result.alamat);
+                 $("#telp").val(result.telp); 
+                 $("#email").val(result.email);
+                 $("#jk").val(result.jk); 
+                 
+                 if(result.jk == 'L'){
+                    $("#priabtn").attr('class','btn btn-primary');
+                    $("#wanitabtn").attr('class','btn btn-default');
                  }else{
-                    $("#adminbtn").attr('class','btn btn-default');
-                    $("#userbtn").attr('class','btn btn-primary');
-                 }
+                    $("#priabtn").attr('class','btn btn-default');
+                    $("#wanitabtn").attr('class','btn btn-primary');
+                 }  
              }
          });
     }
- 
+    
     function Bersihkan_Form(){
         $(':input').val(''); 
     } 
@@ -176,16 +148,13 @@
         if(confirm('Anda yakin ingin menghapus data ini?'))
         { 
         $.ajax({
-            url : "<?php echo base_url('user/hapus_data')?>/"+id,
+            url : "<?php echo base_url('pegawai/hapus_data')?>/"+id,
             type: "GET",
             dataType: "JSON",
             success: function(data)
-            {
-               
+            { 
                $('#example1').DataTable().ajax.reload(); 
-               toastr.success('Data Berhasil Dihapus');
-             
-                 
+               toastr.success('Data Berhasil Dihapus'); 
             },
             error: function (jqXHR, textStatus, errorThrown)
             {
@@ -196,40 +165,23 @@
     } 
    
     function Simpan_Data(){ 
-         var formData = new FormData($('#user_form')[0]);  
-           
-         var username = $("#username").val();
-         
-         if(username == ''){
-            alert("Username Belum anda masukkan!");
-            $("#username").parents('.form-line').addClass('focused error');
-            $("#username").focus();
-          
-         }else{
-
+         var formData = new FormData($('#user_form')[0]);    
             //transaksi dibelakang layar
             $.ajax({
-             url:"<?php echo base_url(); ?>user/simpan_data_user",
+             url:"<?php echo base_url(); ?>pegawai/simpan_data",
              type:"POST",
              data:formData,
              contentType:false,  
              processData:false,   
-             success:function(result){ 
-                
+             success:function(result){  
                  $("#defaultModal").modal('hide');
                  $('#example1').DataTable().ajax.reload(); 
                  $('#user_form')[0].reset();
-                 toastr.success('Data Berhasil Disimpan');
-              
+                 toastr.success('Data Berhasil Disimpan'); 
              }
             });  
-         } 
     }  
-
-    function CariPegawai(){
-        $("#CariPegawaiModal").modal({backdrop: 'static', keyboard: false,show:true});
-    } 
-
+    
     $(document).ready(function() {
         
            $("#addmodal").on("click",function(){
@@ -239,7 +191,7 @@
            });
              
            $("#example1").DataTable({
-              "ajax":"<?php echo base_url(); ?>user/fetch_user",
+              "ajax":"<?php echo base_url(); ?>pegawai/fetch_pegawai",
               "ordering": true,               // Allows ordering
               "searching": true,              // Searchbox
               "paging": true,                 // Pagination

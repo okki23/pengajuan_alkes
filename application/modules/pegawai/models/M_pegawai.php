@@ -1,10 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_karyawan extends Parent_Model { 
+class M_pegawai extends Parent_Model { 
    
-      var $nama_tabel = 'm_karyawan';
-      var $daftar_field = array('id','nip','nama','no_hp','alamat','tinggi_badan','jenkel','email','id_jabatan');
+      var $nama_tabel = 'm_pegawai';
+      var $daftar_field = array('id','nik','nama','alamat','telp','jk','email');
       var $primary_key = 'id';
 
 	  
@@ -12,27 +12,19 @@ class M_karyawan extends Parent_Model {
         parent::__construct();
         $this->load->database();
   }
-  public function fetch_karyawan(){
-       $sql = "select a.*,b.nama_jabatan,
-                  CASE a.jenkel
-                  WHEN 1 THEN 'Pria' 
-                  ELSE 'Wanita'
-                  END as 'gents' from m_karyawan a
-                  left  join m_jabatan b on b.id = a.id_jabatan";   
-		   $getdata = $this->db->query($sql)->result();
+  public function fetch_pegawai(){
+       $sql = $this->db->query('select *,case when jk = "L" then "Laki-Laki" else "Perempuan" end as gents from m_pegawai ')->result();
 		   $data = array();  
 		   $no = 1;
-           foreach($getdata as $row)  
+           foreach($sql as $row)  
            {  
                 $sub_array = array();  
                  
-                $sub_array[] = $row->nip;  
+                $sub_array[] = $row->nik;  
                 $sub_array[] = $row->nama;   
-                $sub_array[] = $row->no_hp; 
-                $sub_array[] = $row->gents; 
-                $sub_array[] = $row->nama_jabatan; 
-                $sub_array[] = $row->tinggi_badan. " cm";  
-                $sub_array[] = $row->alamat;
+                $sub_array[] = $row->alamat; 
+                $sub_array[] = $row->telp; 
+                $sub_array[] = $row->gents;  
                 $sub_array[] = $row->email;     
 		    $sub_array[] = ' 
 				      <a href="javascript:void(0)" class="btn btn-warning btn-sm waves-effect" id="edit" onclick="Ubah_Data('.$row->id.');" > <i class="nav-icon fas fa-edit"></i> Ubah </a> 
@@ -46,8 +38,8 @@ class M_karyawan extends Parent_Model {
 		    
     }
 
-    public function fetch_cat_karyawan(){   
-       $getdata = $this->db->get('m_cat_karyawan')->result();
+    public function fetch_cat_pegawai(){   
+       $getdata = $this->db->get('m_cat_pegawai')->result();
        $data = array();  
        $no = 1;
            foreach($getdata as $row)  

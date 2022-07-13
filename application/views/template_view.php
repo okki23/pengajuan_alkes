@@ -153,21 +153,21 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?php echo base_url('karyawan'); ?>" class="nav-link">
+            <a href="<?php echo base_url('pegawai'); ?>" class="nav-link">
             <i class="nav-icon fas fa-book"></i>
               <p>
-                Karyawan 
+                Pegawai 
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a href="<?php echo base_url('jabatan'); ?>" class="nav-link">
             <i class="nav-icon fas fa-book"></i>
               <p>
                 Posisi 
               </p>
             </a>
-          </li>
+          </li> -->
          
           <li class="nav-header">TRANSAKSI</li>
           <li class="nav-item">
@@ -183,10 +183,19 @@
 
           <li class="nav-header">REPORT</li>
           <li class="nav-item">
-            <a href="<?php echo base_url('print_laporan'); ?>" class="nav-link">
+            <a href="<?php echo base_url('print_laporan_barang'); ?>" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
-                Cetak Laporan
+                Laporan Barang
+                <!-- <span class="badge badge-info right">2</span> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo base_url('print_laporan_pengajuan'); ?>" class="nav-link">
+              <i class="nav-icon far fa-calendar-alt"></i>
+              <p>
+                Laporan Pengajuan
                 <!-- <span class="badge badge-info right">2</span> -->
               </p>
             </a>

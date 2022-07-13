@@ -14,8 +14,8 @@ class M_user extends Parent_Model {
         $this->load->database();
   }
   public function fetch_user(){   
-		   $getdata = $this->db->query('select a.*,b.nama from m_user a
-               left join m_karyawan b on b.id = a.id_pegawai')->result();
+		   $getdata = $this->db->query('select a.*,b.nama,case when a.level = 1 then "Administrator" else "User" end as roles from m_user a
+               left join m_pegawai b on b.id = a.id_pegawai')->result();
 		   $data = array();  
 		   $no = 1;
            foreach($getdata as $row)  
@@ -23,7 +23,8 @@ class M_user extends Parent_Model {
                 $sub_array = array();  
          
                 $sub_array[] = $row->username; 
-                $sub_array[] = $row->nama;  
+                $sub_array[] = $row->nama;
+                $sub_array[] = $row->roles;  
      
                       $sub_array[] = '<a href="javascript:void(0)" class="btn btn-warning btn-sm waves-effect" id="edit" onclick="Ubah_Data('.$row->id.');" > <i class="nav-icon fas fa-edit"></i> Ubah </a>  &nbsp; 
                       <a href="javascript:void(0)" id="delete" class="btn btn-danger btn-sm waves-effect" onclick="Hapus_Data('.$row->id.');" > <i class="nav-icon fas fa-trash"></i> Hapus </a>';  
