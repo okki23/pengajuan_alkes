@@ -183,7 +183,7 @@
 
           <li class="nav-header">REPORT</li>
           <li class="nav-item">
-            <a href="<?php echo base_url('print_laporan_barang'); ?>" class="nav-link">
+            <a href="<?php echo base_url('report_barang'); ?>" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
                 Laporan Barang
@@ -192,10 +192,10 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?php echo base_url('print_laporan_pengajuan'); ?>" class="nav-link">
+            <a href="<?php echo base_url('report_transaksi'); ?>" class="nav-link">
               <i class="nav-icon far fa-calendar-alt"></i>
               <p>
-                Laporan Pengajuan
+                Laporan Transaksi Pengajuan
                 <!-- <span class="badge badge-info right">2</span> -->
               </p>
             </a>

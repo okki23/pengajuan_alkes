@@ -28,7 +28,7 @@ class M_barang extends Parent_Model {
                 $sub_array[] = ' 
                 <a href="javascript:void(0)" class="btn btn-warning btn-sm waves-effect" id="edit" onclick="Ubah_Data('.$row->id.');" > <i class="nav-icon fas fa-edit"></i> Ubah </a>  &nbsp; 
                 <a href="javascript:void(0)" id="delete" class="btn btn-danger btn-sm waves-effect" onclick="Hapus_Data('.$row->id.');" > <i class="nav-icon fas fa-trash"></i> Hapus </a>  &nbsp;';  
-              
+                $sub_array[] = $row->id; 
                 $data[] = $sub_array;  
                 $no++;
            }  

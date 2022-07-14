@@ -11,16 +11,18 @@
             <br>
             &nbsp;
                 <table id="example1" class="table table-bordered table-striped">
-                  <thead>
+                  <thead>       
                       <tr> 
-                        <th style="width:10%;">Kode Pengajuan</th>   
-                        <th style="width:10%;">Kode Barang</th>   
-                        <th style="width:10%;">Nama Barang</th>  
-                        <th style="width:10%;">Jumlah Kelamin</th>  
-                        <th style="width:10%;">Kondisi</th>  
-                        <th style="width:10%;">Keterangan</th> 
-                        <th style="width:10%;">Status</th>    
-                        <th style="width:15%;">Opsi</th>   
+                        <th style="width:5%;">Kode Pengajuan</th>  
+                        <th style="width:10%;">Kode Barang</th>    
+                        <th style="width:15%;">Nama Barang</th>   
+                        <th style="width:5%;">Jumlah</th>   
+                        <th style="width:5%;">Kondisi</th>    
+                        <th style="width:10%;">Keterangan</th>  
+                        <th style="width:5%;">Status</th>   
+                        <th style="width:5%;">PIC</th>   
+                        <th style="width:10%;">Tanggal Pengajuan</th>   
+                        <th style="width:20%;">Opsi</th>   
                       </tr>
                   </thead>  
                 </table>
@@ -47,67 +49,60 @@
                                     <div class="form-group">
                                     <label> Kode Pengajuan  </label>
                                         <div class="form-line">
-                                            <input type="text" name="nip" id="nip" class="form-control" placeholder="NIP" />
+                                            <input type="text" readonly="readonly" name="kode_pengajuan" id="kode_pengajuan" class="form-control"  />
                                         </div>
-                                    </div>
-                                    <label> Kode Barang  </label>
+                                    </div> 
+
                                     <div class="input-group">
-                                        
-                                        <input type="text" name="nama_barang" id="nama_jabatan" class="form-control" readonly="readonly" >
-                                        <input type="hidden" name="id_jabatan" id="id_jabatan" readonly="readonly">
+                                        <input type="text" name="nama_barang" id="nama_barang" class="form-control" readonly="readonly" >
+                                        <input type="hidden" name="id_barang" id="id_barang" readonly="readonly">
                                         <span class="input-group-append">
-                                            <button type="button"  onclick="PilihJabatan();" class="btn btn-primary btn-flat">Pilih Posisi...</button>
+                                            <button type="button"  onclick="CariBarang();" class="btn btn-primary btn-flat">Pilih Barang...</button>
                                         </span>
                                     </div>
-                                    <div class="form-group">
-                                    <label> Nama Barang  </label>
-                                        <div class="form-line">
-                                            <input type="text" name="no_hp" id="no_hp" class="form-control" placeholder="Telp" />
-                                        </div>
-                                    </div>
+
                                     <div class="form-group">
                                     <label> Jumlah  </label>
                                         <div class="form-line">
-                                            <input type="text" name="tinggi_badan" id="tinggi_badan" class="form-control" placeholder="Tinggi Badan" />
+                                            <input type="text" name="jumlah" id="jumlah" class="form-control" placeholder="Jumlah" />
                                         </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                    
-                                    <label> Jenis Kelamin  </label>
-                                    <br>
-                                        <input type="hidden" name="jenkel" id="jenkel">
-
-                                        <button type="button" id="priabtn" class="btn btn-default waves-effect "> Pria </button>
-
-                                        <button type="button" id="wanitabtn" class="btn btn-default waves-effect "> Wanita </button>
-                                    
                                     </div>
                                 
                                     <div class="form-group">
-                                    <label> Alamat  </label>
+                                    <label> Kondisi  </label>
                                         <div class="form-line">
-                                            <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Alamat" />
+                                           
+                                        <select name="kondisi" id="kondisi" class="form-control">
+                                            <option value="">--Pilih--</option>
+                                            <option value="1">Ready</option>
+                                            <option value="2">Good</option>
+                                            <option value="3">Bad</option>
+                                        </select>
                                         </div>
                                     </div>
+                                  
                                     <div class="form-group">
-                                    <label> Email  </label>
+                                    <label> Keterangan  </label>
                                         <div class="form-line">
-                                            <input type="text" name="email" id="email" class="form-control" placeholder="Email" />
+                                            <input type="text" name="keterangan" id="keterangan" class="form-control" placeholder="Keterangan" />
                                         </div>
                                     </div>
-                                    <label> Posisi  </label>
-                                    <div class="input-group">
-                                        
-                                        <input type="text" name="nama_jabatan" id="nama_jabatan" class="form-control" readonly="readonly" >
-                                        <input type="hidden" name="id_jabatan" id="id_jabatan" readonly="readonly">
-                                        <span class="input-group-append">
-                                            <button type="button"  onclick="PilihJabatan();" class="btn btn-primary btn-flat">Pilih Posisi...</button>
-                                        </span>
+
+                                    <div class="form-group">
+                                    <label> Status  </label>
+                                        <div class="form-line">
+                                           
+                                        <select name="status" id="status" class="form-control">
+                                            <option value="">--Pilih--</option>
+                                            <option value="1">Pengajuan</option>
+                                            <option value="2">Perbaikan</option>
+                                            <option value="3">Pengembalian</option>
+                                        </select>
+                                        </div>
                                     </div>
-                                    <br>
-                                    <hr>
+                                  
                                      
+   
                                    <button type="button" onclick="Simpan_Data();" class="btn btn-success waves-effect">  <i class="fas fa-database"></i> Simpan</button>
 
                                    <button type="button" name="cancel" id="cancel" class="btn btn-danger waves-effect" onclick="javascript:Bersihkan_Form();" data-dismiss="modal">  <i class="fas fa-times"></i> Batal</button>
@@ -117,29 +112,31 @@
                     </div>
                 </div>
     </div>
-  
-        
-    <!-- modal cari jabatan -->
-    <div class="modal fade" id="PilihJabatanModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg" role="document">
+
+
+ 
+    <!-- modal cari barang -->
+    <div class="modal fade" id="CariBarangModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-xl" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title" > Pilih Jabatan </h4>
+                            <h4 class="modal-title" >Cari Barang</h4>
                         </div>
                         <div class="modal-body">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">X Tutup</button>
-
+ 
                                 <br>
-                                <hr>
-
-                                 <table width="100%" class="table table-bordered table-striped table-hover " id="daftar_jabatan" >
-  
+                                <hr> 
+                                 <table width="100%" class="table table-bordered table-striped table-hover " id="daftar_barang" >
+   
                                     <thead>
                                         <tr>  
-                                            <th style="width:95%;">Posisi</th>  
-                                        </tr>
+                                            <th style="width:98%;">Kode Barang </th> 
+                                            <th style="width:98%;">Nama Barang </th> 
+                                            <th style="width:98%;">Qty </th> 
+                                         </tr> 
                                     </thead> 
-                                    <tbody id="daftar_jabatanx">
+                                    <tbody id="daftar_barang">
 
                                 </tbody>
                                 </table> 
@@ -147,24 +144,36 @@
                      
                     </div>
                 </div>
-    </div>
+    </div> 
   <script>  
-    $("#priabtn").on("click",function(){
-        $("#jenkel").val('1');
-        $(this).attr('class','btn btn-primary');
-        $("#wanitabtn").attr('class','btn btn-default'); 
-    });
-
-    $("#wanitabtn").on("click",function(){
-        $("#jenkel").val('2');
-        $(this).attr('class','btn btn-primary');
-        $("#priabtn").attr('class','btn btn-default');  
-    }); 
     
-  	function PilihJabatan(){
-        $("#PilihJabatanModal").modal({backdrop: 'static', keyboard: false,show:true});
+
+    function Detail(id){
+        $("#ModalDetailLabel").html("Form Detail Data");
+        $("#ModalDetail").modal('show');
     }
  
+    $('#daftar_barang').DataTable( {
+        "ajax": "<?php echo base_url(); ?>barang/fetch_barang"           
+    });
+
+    
+    function CariBarang(){
+        $("#CariBarangModal").modal({backdrop: 'static', keyboard: false,show:true});
+    } 
+
+
+    var daftar_barang = $('#daftar_barang').DataTable();
+     
+    $('#daftar_barang tbody').on('click', 'tr', function () {
+         
+         var content = daftar_barang.row(this).data()
+         console.log(content);
+         $("#nama_barang").val(content[0] +' - '+content[1]);
+         $("#id_barang").val(content[5]);
+         $("#CariBarangModal").modal('hide');
+    });
+
     function Ubah_Data(id){
         $("#defaultModalLabel").html("Form Ubah Data");
         $("#defaultModal").modal('show');
@@ -176,41 +185,17 @@
              success:function(result){  
                  $("#defaultModal").modal('show'); 
                  $("#id").val(result.id);
-                 $("#nip").val(result.nip);
-                 $("#tinggi_badan").val(result.tinggi_badan);
-                 $("#nama").val(result.nama);
-                 $("#jenkel").val(result.jenkel);
-                 $("#no_hp").val(result.no_hp); 
-                 $("#alamat").val(result.alamat);
-                 $("#email").val(result.email); 
-                 $("#id_jabatan").val(result.id_jabatan);
-                 $("#nama_jabatan").val(result.nama_jabatan);
-                 $("#email").val(result.email); 
-                 if(result.jenkel == '1'){
-                    $("#priabtn").attr('class','btn btn-primary');
-                    $("#wanitabtn").attr('class','btn btn-default');
-                 }else{
-                    $("#priabtn").attr('class','btn btn-default');
-                    $("#wanitabtn").attr('class','btn btn-primary');
-                 }  
+                 $("#kode_pengajuan").val(result.kode_pengajuan);
+                 $("#id_barang").val(result.id_barang);
+                 $("#nama_barang").val(result.kode_barang+' - '+result.nama_barang);
+                 $("#jumlah").val(result.jumlah);
+                 $("#kondisi").val(result.kondisi);
+                 $("#status").val(result.status);
+                 $("#keterangan").val(result.keterangan); 
              }
          });
     }
-   
-    $('#daftar_jabatan').DataTable( {
-        "ajax": "<?php echo base_url(); ?>jabatan/fetch_jabatan" 
-    });
-
-     var daftar_jabatan = $('#daftar_jabatan').DataTable();
-     
-        $('#daftar_jabatan tbody').on('click', 'tr', function () { 
-            var content = daftar_jabatan.row(this).data()
-            console.log(content);
-            $("#nama_jabatan").val(content[0]);
-            $("#id_jabatan").val(content[2]);
-            $("#PilihJabatanModal").modal('hide');
-        } );
-
+    
     function Bersihkan_Form(){
         $(':input').val(''); 
     } 
@@ -259,6 +244,9 @@
                $("#defaultModal").modal({backdrop: 'static', keyboard: false,show:true});
                $("#method").val('Add');
                $("#defaultModalLabel").html("Form Tambah Data");
+               $.get("<?php echo base_url('trans_pengajuan/get_last_id'); ?>",function(result){
+                  $("#kode_pengajuan").val(result);
+               });
            });
              
            $("#example1").DataTable({
